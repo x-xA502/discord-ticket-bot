@@ -25,4 +25,4 @@ async def hello(ctx):
     await ctx.send(f'مرحبا {ctx.author.mention}! 👋')
 
 # شغل البوت
-await bot.start('YOUR_TOKEN_HERE')
+bot.run('YOUR_TOKEN_HERE')
