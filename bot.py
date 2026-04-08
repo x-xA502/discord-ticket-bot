@@ -31,13 +31,15 @@ async def hello(ctx):
 # Slash Command: /ticket
 @bot.tree.command(name="ticket", description="إنشاء تيكت جديد")
 async def ticket_command(interaction: discord.Interaction):
+    await interaction.response.defer()
+    
     guild = interaction.guild
     
     # احصل على جميع الكاتيجوريات
     categories = [c for c in guild.categories]
     
     if not categories:
-        await interaction.response.send_message("❌ لا توجد كاتيجوريات في السيرفر!", ephemeral=True)
+        await interaction.followup.send("❌ لا توجد كاتيجوريات في السيرفر!", ephemeral=True)
         return
     
     # إنشاء Dropdown للاختيار بين الكاتيجوريات
@@ -90,7 +92,7 @@ async def ticket_command(interaction: discord.Interaction):
     view = discord.ui.View()
     view.add_item(CategorySelect(categories))
     
-    await interaction.response.send_message("اختر الكاتيجوري:", view=view, ephemeral=True)
+    await interaction.followup.send("اختر الكاتيجوري:", view=view, ephemeral=True)
 
 # شغل البوت
 if __name__ == '__main__':
