@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+import asyncio
 import json
 import os
 from datetime import datetime
@@ -25,4 +26,4 @@ async def hello(ctx):
     await ctx.send(f'مرحبا {ctx.author.mention}! 👋')
 
 # شغل البوت
-asyncio.run(bot.start('YOUR_TOKEN_HERE'))
+await bot.start('YOUR_TOKEN_HERE')
